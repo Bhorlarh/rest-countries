@@ -1,0 +1,33 @@
+:root {
+  --dark-blue-elements: hsl(209, 23%, 22%);
+  --very-dark-blue: hsl(207, 26%, 17%);
+  --dark-gray: hsl(0, 0%, 52%);
+  --very-light-gray: hsl(0, 0%, 98%);
+}
+
+header.light-mode {
+  border-bottom: 2px solid var(--very-light-gray);
+}
+
+header.dark-mode {
+  background-color: var(--dark-blue-elements);
+  color: white;
+}
+
+div.mr5 {
+  width: 89px;
+}
+
+div.mr5:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 767px) {
+  header.pl5 {
+    padding-left: 1rem;
+  }
+
+  div.pr5 {
+    padding-right: 1rem;
+  }
+}

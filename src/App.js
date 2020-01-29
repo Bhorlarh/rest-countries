@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Fragment } from 'react';
+import Navigation from './Navigation.js';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      colorMode: 'light'
+    }
+  }
+
+  changeMode = () => {
+    if ( this.state.colorMode === 'light' ) {
+      this.setState({colorMode: 'dark'})
+    } else {
+      this.setState({colorMode: 'light'})
+    }
+
+  }
+
+  render() {
+    return (
+      <Fragment>
+        <Navigation colorMode = {this.state.colorMode} changeMode = { this.changeMode }/>
+      </Fragment>
+    );
+  }
 }
 
 export default App;
