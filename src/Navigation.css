@@ -1,25 +1,23 @@
-:root {
-  --dark-blue-elements: hsl(209, 23%, 22%);
-  --very-dark-blue: hsl(207, 26%, 17%);
-  --dark-gray: hsl(0, 0%, 52%);
-  --very-light-gray: hsl(0, 0%, 98%);
+header {
+  background-color: white;
+  box-shadow: 0px 0px 5px 1px #e6e4e4;
 }
 
-header.light-mode {
-  border-bottom: 2px solid var(--very-light-gray);
-}
-
-header.dark-mode {
+body.dark-mode header {
   background-color: var(--dark-blue-elements);
-  color: white;
+  box-shadow: 0 0 10px #192631;
 }
 
-div.mr5 {
-  width: 89px;
+.color-mode {
+  width: 90px;
 }
 
-div.mr5:hover {
+.color-mode:hover {
   cursor: pointer;
+}
+
+header h2 {
+  font-weight: 800;
 }
 
 @media only screen and (max-width: 767px) {
@@ -27,7 +25,17 @@ div.mr5:hover {
     padding-left: 1rem;
   }
 
-  div.pr5 {
-    padding-right: 1rem;
+  header h2 {
+    font-size: 1rem;
   }
+
+  header h5 {
+    font-size: 0.78rem;
+    font-weight: 500;
+  }
+
+  div.color-mode {
+    margin-right: 1rem;
+  }
+
 }

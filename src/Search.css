@@ -1,0 +1,44 @@
+.search-bar {
+  flex-grow: 1;
+  border: none;
+}
+
+.search-bar:focus {
+  outline: none;
+}
+
+.search-bar::placeholder {
+  font-size: 14px;
+  color: hsl(0, 0%, 65%);
+}
+
+.search-area {
+  background-color: white;
+  width: 450px;
+  box-shadow: 0 0 10px #e3e3e3;
+}
+
+.search-area svg {
+  padding-left: 2rem;
+  padding-right: 1.5rem;
+}
+
+.search-area path {
+  fill: hsl(0, 0%, 60%);
+}
+
+.dark-mode .search-bar::placeholder {
+  color: white;
+}
+
+.dark-mode .search-area path {
+  fill: white;
+}
+
+.dark-mode .search-bar, .dark-mode .search-area {
+  background-color: var(--dark-blue-elements);
+  color: white;
+}
+.dark-mode .search-area {
+  box-shadow: 0 0 10px hsl(209, 25%, 16%);
+}
