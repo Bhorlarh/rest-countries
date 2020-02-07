@@ -1,15 +1,15 @@
-import React, { Fragment } from 'react';
+import React   from 'react';
 import Card from './Card.js';
+import './CardList.css';
 
 function CardList({ loading, countries }) {
   return (
-    <Fragment>
-    {
-      !loading
-      ? (<Card country={countries[0]} />)
-      : null
+    <section className="mh5">
+    { !loading
+      ? (countries.map(country => (<Card country={country} />)))
+      : <h1>Loading...</h1>
     }
-    </Fragment>
+    </section>
 )
 }
 

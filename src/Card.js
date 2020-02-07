@@ -3,7 +3,7 @@ import './Card.css';
 
 function Card ({ country }) {
   return (
-    <div className="card">
+    <div className="card element-shadow elem-dark">
       <img src={country.flag} alt="flag" />
 
       <div className="card-content">

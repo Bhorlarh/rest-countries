@@ -15,7 +15,7 @@
 .search-area {
   background-color: white;
   width: 450px;
-  box-shadow: 0 0 10px #e3e3e3;
+  max-width: 90vw;
 }
 
 .search-area svg {
@@ -31,14 +31,13 @@
   color: white;
 }
 
-.dark-mode .search-area path {
-  fill: white;
-}
+@media only screen and (max-width:767px) {
+  .search-bar::placeholder {
+    font-size: 0.8rem;
+  }
 
-.dark-mode .search-bar, .dark-mode .search-area {
-  background-color: var(--dark-blue-elements);
-  color: white;
-}
-.dark-mode .search-area {
-  box-shadow: 0 0 10px hsl(209, 25%, 16%);
+  .search-area {
+    margin-bottom: 2.5rem;
+  }
+
 }

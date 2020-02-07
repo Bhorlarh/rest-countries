@@ -5,3 +5,31 @@
   --very-light-gray: hsl(0, 0%, 98%);
   --very-dark-blue-text: hsl(200, 15%, 8%)
 }
+
+.filter {
+  margin: 3rem 4rem;
+}
+
+@media only screen and (max-width: 767px) {
+  .filter {
+    margin: 1.7rem 1rem 2rem 1rem;
+  }
+}
+
+.element-shadow {
+  box-shadow: 0px 0px 10px -2px hsl(0, 4%, 80%);
+}
+
+.dark-mode .element-shadow {
+  box-shadow: 0px 2px 5px 1px hsl(209, 25%, 16%);
+}
+
+.dark-mode .search-area path,
+.dark-mode .down-arrow path {
+  fill: white;
+}
+
+.dark-mode .elem-dark {
+  background-color: var(--dark-blue-elements);
+  color: white;
+}
