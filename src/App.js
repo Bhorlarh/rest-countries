@@ -3,6 +3,7 @@ import Navigation from './Navigation.js';
 import CardList from './CardList';
 import Search from './Search';
 import Select from './Select';
+import CardPage from './CardPage';
 import './App.css';
 
 class App extends React.Component {
@@ -13,17 +14,42 @@ class App extends React.Component {
       apiCountries: [],
       displayCountries: [],
       region: 'Filter by Region',
-      clickedOutside: false,
+      // location: 'card-page',
+      location: 'card-list',
+      country: {
+        name: "Belgium",
+        nativeName: "Belgie",
+        population: 11319511,
+        region: "Europe",
+        subRegion: "Western Europe",
+        capital: "Brussels",
+        topLevelDomain: ".be",
+        currencies: "Euro",
+        languages: "Dutch, French, German",
+        borders: [
+          "France",
+          "Germany",
+          "Netherlands"
+        ]
+      },
+      borderCountries: [
+        {
+          name: "France",
+          borders: ["France", "Dani"]
+        }
+      ],
       loading: true
     }
   }
 
+  // make api call to rest-countries
   fetchCountries() {
     fetch('https://restcountries.eu/rest/v2/all')
     .then(response => response.json())
     .then(apiCountries => this.setState({ apiCountries , displayCountries : apiCountries, loading: false }))
   }
 
+  // filter countries with search input
   searchCountries = (e) => {
     const {apiCountries, searchBox} = this.state;
     const displayCountries = apiCountries.filter(country => {
@@ -33,14 +59,15 @@ class App extends React.Component {
     this.setState({ displayCountries });
   }
 
+  // filter countries by region
   selectRegion = (e) => {
     const { apiCountries } = this.state;
 
-    // check if clicked item is a list element
+    // check if clicked item is a span element
     if (e.target.nodeName === "SPAN" ) {
+
       // change region
       this.setState({ region: e.target.textContent }, () => {
-        // alert(this.state.region);
         // filter countries by region
         const displayCountries = apiCountries.filter(country => {
           return country.region.toLowerCase() === this.state.region.toLowerCase();
@@ -51,6 +78,7 @@ class App extends React.Component {
     }
   }
 
+  // change color mode
   changeColorMode = () => {
     if (this.state.colorMode === 'light') {
       this.setState({colorMode: 'dark'})
@@ -62,23 +90,79 @@ class App extends React.Component {
     }
   }
 
+  // change display to country or homepage
+  changePageView = (country) => {
+
+    if (country.name) {
+      // display country details
+      this.setState({ location: "card-page", country });
+      document.querySelector("body").classList.toggle("card-page");
+      return;
+    }
+      // go to Homepage
+      this.setState({ location: "card-list" });
+      document.querySelector("body").classList.toggle("card-page");
+  }
+
+  // set country to show
+  renderCountry = (country) => {
+    const countryBordersList = JSON.stringify(country.borders);
+    let borderCountries;
+
+    if (country.borders.length > 0) {
+      borderCountries = this.state.apiCountries.filter(apiCountry => {
+        return countryBordersList.includes(apiCountry.alpha3Code);
+      })
+    } else {
+      borderCountries = [];
+    }
+
+    this.setState({ borderCountries })
+    this.changePageView(country);
+  }
+
   componentDidMount() {
     this.fetchCountries();
   }
 
   render() {
     return (
-      <div onClick={() => {this.setState({clickedOutside: true})}}>
-        <Navigation colorMode={this.state.colorMode} changeMode={this.changeColorMode}/>
-        <div className="flex justify-between filter flex-wrap items-start">
-          <Search searchCountries={this.searchCountries} />
-          <Select selectRegion={this.selectRegion} region={this.state.region} clickedOutside={this.state.clickedOutside}/>
-        </div>
-        <CardList loading={this.state.loading} countries={this.state.displayCountries} searchBox={this.state.searchBox}/>
-      </div>
+      <Fragment>
+        <Navigation
+          colorMode={this.state.colorMode}
+          changeMode={this.changeColorMode}
+        />
+        {
+          this.state.location === "card-list" ?
+          (
+            <Fragment>
+              <div className="flex justify-between filter flex-wrap items-start">
+                <Search searchCountries={this.searchCountries} />
+                <Select
+                  selectRegion={this.selectRegion}
+                  region={this.state.region}
+                  clickedOutside={this.state.clickedOutside}
+                />
+              </div>
+              <CardList
+                loading={this.state.loading}
+                countries={this.state.displayCountries}
+                searchBox={this.state.searchBox}
+                renderCountry={this.renderCountry}
+              />
+            </Fragment>
+          )
+          :
+          <CardPage
+            changePageView={this.changePageView}
+            renderCountry={this.renderCountry}
+            country={this.state.country}
+            borderCountries={this.state.borderCountries}
+          />
+        }
+      </Fragment>
     )
   }
-
 }
 
 export default App;

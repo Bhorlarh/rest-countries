@@ -32,3 +32,17 @@
   transform: rotate(-180deg);
   transition: 0s;
 }
+
+/* control dropdown select */
+.masterBackground{
+  position: fixed;
+  width: 100%;
+  min-height: 100vh;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+}
+
+.activeBackground{
+  pointer-events: all;
+}

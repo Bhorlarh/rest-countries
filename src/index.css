@@ -7,6 +7,10 @@ body {
   color: var(--very-dark-blue-text);
 }
 
+.card-page {
+  background-color: white;
+}
+
 body.dark-mode {
   background-color: var(--very-dark-blue);
   color: white;
