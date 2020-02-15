@@ -14,30 +14,9 @@ class App extends React.Component {
       apiCountries: [],
       displayCountries: [],
       region: 'Filter by Region',
-      // location: 'card-page',
       location: 'card-list',
-      country: {
-        name: "Belgium",
-        nativeName: "Belgie",
-        population: 11319511,
-        region: "Europe",
-        subRegion: "Western Europe",
-        capital: "Brussels",
-        topLevelDomain: ".be",
-        currencies: "Euro",
-        languages: "Dutch, French, German",
-        borders: [
-          "France",
-          "Germany",
-          "Netherlands"
-        ]
-      },
-      borderCountries: [
-        {
-          name: "France",
-          borders: ["France", "Dani"]
-        }
-      ],
+      country: {},
+      borderCountries: [],
       loading: true
     }
   }
@@ -51,9 +30,9 @@ class App extends React.Component {
 
   // filter countries with search input
   searchCountries = (e) => {
-    const {apiCountries, searchBox} = this.state;
+    const {apiCountries} = this.state;
     const displayCountries = apiCountries.filter(country => {
-      return country.name.toLowerCase().includes(document.querySelector(".search-bar").value.toLowerCase());
+      return country.name.toLowerCase().includes(e.target.value.toLowerCase());
     })
 
     this.setState({ displayCountries });
@@ -96,12 +75,12 @@ class App extends React.Component {
     if (country.name) {
       // display country details
       this.setState({ location: "card-page", country });
-      document.querySelector("body").classList.toggle("card-page");
+      document.querySelector("body").classList.add("card-page");
       return;
     }
       // go to Homepage
       this.setState({ location: "card-list" });
-      document.querySelector("body").classList.toggle("card-page");
+      document.querySelector("body").classList.remove("card-page");
   }
 
   // set country to show

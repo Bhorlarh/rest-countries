@@ -19,31 +19,31 @@ function CardPage ({ country, borderCountries, changePageView, renderCountry }) 
 
       <div className="country-container mh5 flex flex-wrap">
         <div className="flag">
-          <img src={country.flag} />
+          <img src={country.flag} alt={`Flag of $(country.name)`}/>
         </div>
-        <div className="country-details mt3">
-          <h1 className="fw8 h1 country-name">{country.name}</h1>
-          <div className="country-info-first mt2">
-            <p><b>Native Name:</b> {country.nativeName}</p>
-            <p><b>Population:</b> {country.population.toLocaleString()}</p>
-            <p><b>Region:</b> {country.region}</p>
-            <p><b>Sub Region:</b> {country.subRegion}</p>
-            <p><b>Capital:</b> {country.capital}</p>
-          </div>
-          <div className="country-info-second mt2">
-            <p><b>Top Level Domain:</b> {country.topLevelDomain}</p>
-            <p><b>Currencies:</b> {country.currencies[0].name}</p>
-            <p><b>Languages:</b> {country.languages[0].name}</p>
-          </div>
-          <div className="border-countries flex flex-wrap items-center">
-            <b>Border Countries:</b>
-            <div className="border-countries-list flex flex-wrap justify-between mt2">
-              {
-                borderCountries.map(borderCountry => {
-                  return (<div className="element-shadow pointer pa2 tc bg-white br2 elem-dark ma1"
-                  onClick={() => {console.log(borderCountry);renderCountry(borderCountry)}}>{borderCountry.name}</div>)})
-              }
+        <div className="country-details pt3 flex flex-column">
+          <h1 className="fw8 country-name">{country.name}</h1>
+          <div className="flex justify-between info-container">
+            <div className="country-info-first">
+              <p><b>Native Name:</b> {country.nativeName}</p>
+              <p><b>Population:</b> {country.population.toLocaleString()}</p>
+              <p><b>Region:</b> {country.region}</p>
+              <p><b>Sub Region:</b> {country.subregion}</p>
+              <p><b>Capital:</b> {country.capital}</p>
             </div>
+            <div className="country-info-second">
+              <p><b>Top Level Domain:</b> {country.topLevelDomain}</p>
+              <p><b>Currencies:</b> {country.currencies[0].name}</p>
+              <p><b>Languages:</b> {country.languages[0].name}</p>
+            </div>
+          </div>
+          <div className="border-countries flex flex-wrap items-center mt4 mb5">
+            <b className="mr1">Border Countries:</b>
+            {
+              borderCountries.map(borderCountry => {
+                return (<div key={borderCountry.name} className="element-shadow pointer pa1 tc bg-white br2 elem-dark ma1"
+                onClick={() => {renderCountry(borderCountry)}}>{borderCountry.name}</div>)})
+            }
           </div>
         </div>
       </div>

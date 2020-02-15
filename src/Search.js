@@ -1,10 +1,11 @@
 import React from 'react';
 import './Search.css';
 
+
 function Search({ searchCountries }) {
   return (
     <div className="search-area flex pv3 br2 items-center element-shadow elem-dark pointer">
-      <svg onClick={searchCountries} xmlns="http://www.w3.org/2000/svg" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 511.999 511.999" style={{enableBackground: "new 0 0 511.999 511.999;"}} width="18px" height="auto" className="ph4">
+      <svg version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 511.999 511.999" style={{enableBackground: "new 0 0 511.999 511.999"}} width="18px" height="18px" className="ph4">
         <g>
           <g>
       	   <g>
@@ -13,7 +14,7 @@ function Search({ searchCountries }) {
           </g>
         </g>
       </svg>
-      <input className="search-bar mr4 elem-dark" placeholder="Search for a country..."></input>
+      <input  onChange={searchCountries} className="search-bar mr4 elem-dark" placeholder="Search for a country..."></input>
     </div>
   )
 }
