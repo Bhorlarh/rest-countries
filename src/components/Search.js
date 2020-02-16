@@ -15,7 +15,8 @@ function Search({ searchCountries }) {
           </g>
         </g>
       </svg>
-      <input  onChange={searchCountries} className="search-bar mr4 elem-dark" placeholder="Search for a country..."></input>
+      <label for="searchbox"></label>
+      <input id="searchbox" onChange={searchCountries} className="search-bar mr4 elem-dark" placeholder="Search for a country..."></input>
     </div>
   )
 }
