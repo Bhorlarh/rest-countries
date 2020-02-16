@@ -4,7 +4,6 @@ import lightMoon from './moon.png';
 import darkMoon from './black-moon.png';
 
 function Navigation ( { colorMode, changeMode } ) {
-
   return (
     <Fragment>
     <header className='flex items-center justify-between pl5'>

@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
-import Navigation from './Navigation.js';
-import CardList from './CardList';
-import Search from './Search';
-import Select from './Select';
-import CardPage from './CardPage';
+import Navigation from '../components/Navigation.js';
+import CardList from '../components/CardList';
+import Search from '../components/Search';
+import Select from '../components/Select';
+import CardPage from '../components/CardPage';
 import './App.css';
 
 class App extends React.Component {
