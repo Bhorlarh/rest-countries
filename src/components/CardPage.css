@@ -73,6 +73,7 @@
 
   .country-details {
     max-width: 100%;
+    max-height: none;
     width: 26rem;
   }
 
@@ -102,10 +103,6 @@
   .country-container .flag,
   .country-details {
     width: 20rem;
-  }
-
-  .border-countries-list {
-    max-width: 20rem;
   }
 
   .border-countries div {
