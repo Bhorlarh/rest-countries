@@ -74,6 +74,7 @@
   .country-details {
     max-width: 100%;
     max-height: none;
+    height: auto;
     width: 26rem;
   }
 

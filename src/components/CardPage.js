@@ -40,7 +40,7 @@ function CardPage ({ country, borderCountries, changePageView, renderCountry }) 
               </p>
             </div>
           </div>
-          <div className="border-countries flex flex-wrap items-center mt4 mb5">
+          <div className="border-countries flex flex-wrap items-center mt4">
             <b className="mr1">Border Countries:</b>
             {
               borderCountries.map(borderCountry => {
