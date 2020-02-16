@@ -25,9 +25,8 @@
 
 .flag {
   width: 40vw;
-  height: 55vh;
+  height: auto;
   max-width: 36rem;
-  max-height: 24rem;
 }
 
 .flag img {
@@ -63,18 +62,18 @@
 
 @media only screen and (max-width: 1100px) {
   .country-container {
-    margin: 0 auto;
     align-items: center;
     flex-direction: column;
     margin-bottom: 5rem;
   }
 
   .country-container .flag {
+    min-height: unset;
     width: 26rem;
-    height: 18rem;
   }
 
   .country-details {
+    max-width: 100%;
     width: 26rem;
   }
 
@@ -101,11 +100,7 @@
     margin-right: 2rem;
   }
 
-  .country-container .flag {
-    width: 20rem;
-    height: 14rem;
-  }
-
+  .country-container .flag,
   .country-details {
     width: 20rem;
   }
@@ -116,5 +111,12 @@
 
   .border-countries div {
     font-size: 0.9rem;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .country-container .flag {
+    width: 100%;
+    align-self: flex-start;
   }
 }

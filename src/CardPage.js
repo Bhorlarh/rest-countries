@@ -34,7 +34,10 @@ function CardPage ({ country, borderCountries, changePageView, renderCountry }) 
             <div className="country-info-second">
               <p><b>Top Level Domain:</b> {country.topLevelDomain}</p>
               <p><b>Currencies:</b> {country.currencies[0].name}</p>
-              <p><b>Languages:</b> {country.languages[0].name}</p>
+              <p><b>Languages:</b> {
+                country.languages.map(lang => lang.name).join(", ")
+              }
+              </p>
             </div>
           </div>
           <div className="border-countries flex flex-wrap items-center mt4 mb5">
