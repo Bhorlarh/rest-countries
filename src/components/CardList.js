@@ -4,7 +4,7 @@ import './CardList.css';
 
 function CardList({ loading, countries, renderCountry }) {
   return (
-    <section className="mh5">
+    <section className="mh5 pb5">
     { !loading
       ? (countries.map(country => (<Card key={country.name.toString()} country={country} renderCountry={renderCountry}/>)))
       : <h1>Loading...</h1>
