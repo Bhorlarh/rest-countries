@@ -18,6 +18,7 @@ function Select({ selectRegion, region, clickedOutside }) {
   )
   const regionWrapper = "region-filter" + (active ? " active" : "");
 
+
   return (
     <Fragment>
       <div onClick={() => setActive(false)} className={backgroundClasses.join(' ')}></div>
