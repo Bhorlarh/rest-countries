@@ -30,8 +30,8 @@ class App extends React.Component {
 
   // filter countries with search input
   searchCountries = (e) => {
-    const {apiCountries} = this.state;
-    const displayCountries = apiCountries.filter(country => {
+    const currentCountries = this.state.displayCountries;
+    const displayCountries = currentCountries.filter(country => {
       return country.name.toLowerCase().includes(e.target.value.toLowerCase());
     })
 
@@ -42,19 +42,20 @@ class App extends React.Component {
   selectRegion = (e) => {
     const { apiCountries } = this.state;
 
-    // check if clicked item is a span element
-    if (e.target.nodeName === "SPAN" ) {
+    // change region
+    this.setState({ region: e.target.textContent }, () => {
 
-      // change region
-      this.setState({ region: e.target.textContent }, () => {
-        // filter countries by region
-        const displayCountries = apiCountries.filter(country => {
-          return country.region.toLowerCase() === this.state.region.toLowerCase();
-        })
-
-        this.setState({ displayCountries });
-      })
-    }
+      // filter countries by region
+      if (this.state.region === 'All') {
+        this.setState({ displayCountries: apiCountries });
+        return;
+      } else {
+          const displayCountries = apiCountries.filter(country => {
+            return country.region.toLowerCase() === this.state.region.toLowerCase();
+          })
+          this.setState({ displayCountries });
+        }
+    })
   }
 
   // change color mode

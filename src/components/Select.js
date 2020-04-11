@@ -8,12 +8,13 @@ function Select({ selectRegion, region, clickedOutside }) {
   const listOfRegions =
   (
     <div className="region-options flex flex-column br2 elem-dark element-shadow"
-    onClick={(e) => {selectRegion(e);setActive(false)}}>
-      <span className="f6 pointer">Africa</span>
-      <span className="f6 pointer">Americas</span>
-      <span className="f6 pointer">Asia</span>
-      <span className="f6 pointer">Europe</span>
-      <span className="f6 pointer">Oceania</span>
+    onClick={() => setActive(false)}>
+      <span onClick={(e) => selectRegion(e)} className="f6 pointer">All</span>
+      <span onClick={(e) => selectRegion(e)} className="f6 pointer">Africa</span>
+      <span onClick={(e) => selectRegion(e)} className="f6 pointer">Americas</span>
+      <span onClick={(e) => selectRegion(e)} className="f6 pointer">Asia</span>
+      <span onClick={(e) => selectRegion(e)} className="f6 pointer">Europe</span>
+      <span onClick={(e) => selectRegion(e)} className="f6 pointer">Oceania</span>
     </div>
   )
   const regionWrapper = "region-filter" + (active ? " active" : "");
@@ -26,6 +27,7 @@ function Select({ selectRegion, region, clickedOutside }) {
         <div className="current-region element-shadow br2 flex justify-between items-center elem-dark pointer"
         onClick={() => {active ? setActive(false) : setActive(true)}}>
           <span className="f6">{region}</span>
+
           <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 491.996 491.996"
            style={{enableBackground: "new 0 0 491.996 491.996"}} width="10px" height="10px" className="down-arrow">
             <g>
