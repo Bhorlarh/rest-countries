@@ -12,7 +12,7 @@ If you have node installed:
 git clone https://github.com/Bhorlarh/rest-countries.git
 cd rest-countries
 npm install
-npm run
+npm start
 ```
 
 Runs the app in the development mode.<br />

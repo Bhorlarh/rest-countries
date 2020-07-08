@@ -17,11 +17,11 @@ function CardPage ({ country, borderCountries, changePageView, renderCountry }) 
         <span>Back</span>
       </div>
 
-      <div className="country-container mh5 flex flex-wrap">
+      <div className="country-container mh5 mb5 flex flex-wrap">
         <div className="flag">
           <img src={country.flag} alt={`Flag of $(country.name)`}/>
         </div>
-        <div className="country-details pt3 flex flex-column">
+        <div className="country-details flex flex-column">
           <h1 className="fw8 country-name">{country.name}</h1>
           <div className="flex justify-between info-container">
             <div className="country-info-first">
